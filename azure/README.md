@@ -12,3 +12,9 @@ There are services that I also use and actions I need to make to use these servi
 
 - Azure Vault
 - To be completed...
+
+### Brief note on Azure Vault
+
+You can create a Vault with the following command:
+
+    az keyvault create --name "az-keyvault-name" --resource-group "your_rg_group" --location "westeurope"
