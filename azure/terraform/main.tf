@@ -112,6 +112,12 @@ resource "tls_private_key" "example_ssh" {
   rsa_bits  = 4096
 }
 
+resource "local_file" "private_key" {
+  content         = tls_private_key.example_ssh.private_key_pem
+  filename        = "azure-vm-instance.pem"
+  file_permission = "0600"
+}
+
 # Create virtual machine
 resource "azurerm_linux_virtual_machine" "myterraformvm" {
   name                  = "myVM"
@@ -128,8 +134,8 @@ resource "azurerm_linux_virtual_machine" "myterraformvm" {
 
   source_image_reference {
     publisher = "Canonical"
-    offer     = "UbuntuServer"
-    sku       = "20.04-LTS"
+    offer     = "0001-com-ubuntu-server-focal"
+    sku       = "20_04-lts-gen2"
     version   = "latest"
   }
 
