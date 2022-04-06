@@ -1,0 +1,19 @@
+name: Shell
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  # Task name
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v1
+      - name: Run ShellCheck
+        uses: azohra/shell-linter@latest
+        with:
+          path: "azure/vault"
